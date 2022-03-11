@@ -1,5 +1,7 @@
 package classes;
 
+import java.util.Objects;
+
 public class CarDetails {
     private int year, price;
     private String color, model;
@@ -41,6 +43,19 @@ public class CarDetails {
 
     public void setModel(String model) {
         this.model = model;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CarDetails that = (CarDetails) o;
+        return year == that.year && price == that.price && Objects.equals(color, that.color) && Objects.equals(model, that.model);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(year, price, color, model);
     }
 
     @Override
